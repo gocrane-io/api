@@ -75,14 +75,14 @@ type PodGroupPrediction struct {
 type PredictionStatus string
 
 const (
-	// PredictionStatusCharging means no valid prediction series is available, just wait to predicting.
-	PredictionStatusCharging PredictionStatus = "Charging"
-	// PredictionStatusPredicting means prediction is on the way, result is ready and value is valid.
+	// PredictionStatusPending - no valid prediction series available, wait for prediction.
+	PredictionStatusPending PredictionStatus = "Pending"
+	// PredictionStatusPredicting - prediction is on the way, result is ready and value is valid.
 	PredictionStatusPredicting PredictionStatus = "Predicting"
-	// PredictionStatusUnstart means the prediction has not start.
-	PredictionStatusUnstart PredictionStatus = "Unstart"
-	// PredictionStatusFinished means the prediction has finished.
-	PredictionStatusFinished PredictionStatus = "Finished"
+	// PredictionStatusNotStarted - the prediction has not start.
+	PredictionStatusNotStarted PredictionStatus = "NotStarted"
+	// PredictionStatusCompleted - the prediction has competed.
+	PredictionStatusCompleted PredictionStatus = "Completed"
 )
 
 // PodGroupPredictionSpec is a description of a PodGroupPrediction.
