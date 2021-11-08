@@ -1,10 +1,7 @@
 name: Go
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
+
 
 jobs:
 
@@ -20,3 +17,11 @@ jobs:
 
     - name: Build
       run: make all
+      
+    - name: Enable Pull Request Automerge
+      if: steps.cpr.outputs.pull-request-operation == ''
+      uses: peter-evans/enable-pull-request-automerge@v1
+      with:
+        token: ${{ secrets.PAT }}
+        pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+        merge-method: squash
