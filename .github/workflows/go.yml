@@ -1,10 +1,7 @@
 name: Go
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
+
 
 jobs:
 
@@ -19,19 +16,12 @@ jobs:
         go-version: 1.17
 
     - name: Build
-      run: go build -v ./... | tee output.txt
-
-    - name: Test
-      run: go test -v ./... | tee output.txt
+      run: make all
       
-    - name: "Post output to PR"
-      uses: EliLillyCo/github-actions-post-to-pr@main
+    - name: Enable Pull Request Automerge
+      if: steps.cpr.outputs.pull-request-operation == ''
+      uses: peter-evans/enable-pull-request-automerge@v1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        post_to_pr_definition: |
-          [
-            {
-              "message_file": "./output.txt",
-              "title": "Build Result"
-            }
-          ]
+        token: ${{ secrets.PAT }}
+        pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+        merge-method: squash
