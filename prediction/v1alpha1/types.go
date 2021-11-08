@@ -58,6 +58,7 @@ type NodePredictionResourceSpec struct {
 	MetricPredictionConfigs []MetricPredictionConfig `json:"metricPredictionConfigs,omitempty"`
 }
 
+
 // NodePredictionResourceStatus represents information about the status of NodePrediction
 type NodePredictionResourceStatus struct {
 	// NextPossible is the predicted resource usage in next resolution point based on previous series.
