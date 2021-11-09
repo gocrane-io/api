@@ -1,16 +1,16 @@
 ---
-title: Proposal Template
+title: QOS Ensurance Policy API Introduction
 authors:
   - "@devinyan"
 reviewers:
-  - "@AAA"
+  - "@mfanjie"
 creation-date: 2021-11-03
-last-updated: 2021-11-03
+last-updated: 2021-11-09
 status: implementable
 ---
 
 # Title
-- Quality Probe And Ensurance API Introduction
+- QOS Ensurance Policy API Introduction
 
 ## Table of Contents
 - [Quality Probe And Ensurance API Introduction](#Quality Probe And Ensurance API Introduction)
